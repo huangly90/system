@@ -18,8 +18,25 @@ import java.util.List;
 @SpringBootTest
 class SystemApplicationTests {
 
+
     @Autowired
     OrgStructService orgStructService;
+
+    @Autowired
+    OrgService orgService;
+
+
+    @Test
+    void  findOrgTree(){
+//        orgService.findAll()
+    }
+
+
+
+
+
+
+
 
     @Test
     void testAddOrgStruct(){
@@ -38,16 +55,12 @@ class SystemApplicationTests {
         orgStructGNGS1.setCode("C01");
         orgStructGNGS1.setName("公司11111");
 
-        orgStructGNGS1.setRelateOrgCode("C01");
-        orgStructGNGS1.setRelateOrgName("公司1");
         orgStructGNGS1.setRelateOrgId("5f0adebf97698b37d820819e");
         orgStructGNGS1.setPid(id2);
 
         OrgStruct orgStructGNGS2=new OrgStruct();
         orgStructGNGS2.setCode("C02");
         orgStructGNGS2.setName("公司2");
-        orgStructGNGS2.setRelateOrgCode("C02");
-        orgStructGNGS2.setRelateOrgName("公司2");
         orgStructGNGS2.setRelateOrgId("5f0adebf97698b37d820819f");
         orgStructGNGS2.setPid(id2);
 
@@ -65,16 +78,12 @@ class SystemApplicationTests {
         orgStructGWGS1.setCode("C01");
         orgStructGWGS1.setName("公司11111");
 
-        orgStructGWGS1.setRelateOrgCode("C01");
-        orgStructGWGS1.setRelateOrgName("公司1");
         orgStructGWGS1.setRelateOrgId("5f0adebf97698b37d820819e");
         orgStructGWGS1.setPid(id3);
 
         OrgStruct orgStructGWGS2=new OrgStruct();
         orgStructGWGS2.setCode("C02");
         orgStructGWGS2.setName("公司2222222222");
-        orgStructGWGS2.setRelateOrgCode("C02");
-        orgStructGWGS2.setRelateOrgName("公司2");
         orgStructGWGS2.setRelateOrgId("5f0adebf97698b37d820819f");
         orgStructGWGS2.setPid(id3);
         orgStructService.insert(orgStructGWGS1);

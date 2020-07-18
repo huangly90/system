@@ -1,8 +1,10 @@
 package org.huangly.service;
 
+import org.huangly.domain.Org;
 import org.huangly.domain.OrgStruct;
 import org.huangly.exception.DataNoFundException;
 import org.huangly.repository.OrgStructRepository;
+import org.huangly.util.TreeUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -29,7 +31,7 @@ public class OrgStructService {
         orgStructRepository.findAll().iterator().forEachRemaining(
                 orgstruct->list.add(orgstruct)
         );
-        return list;
+        return (List<OrgStruct>) TreeUtil.listToTree(list);
     }
     public OrgStruct findById(String id) {
         return orgStructRepository.findById(id).orElseThrow(()-> new DataNoFundException());

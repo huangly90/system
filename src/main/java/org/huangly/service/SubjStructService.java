@@ -5,6 +5,7 @@ import org.huangly.domain.SubjStruct;
 import org.huangly.exception.DataNoFundException;
 import org.huangly.repository.SubjRepository;
 import org.huangly.repository.SubjStructRepository;
+import org.huangly.util.TreeUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -31,7 +32,8 @@ public class SubjStructService {
         subjStructRepository.findAll().iterator().forEachRemaining(
                 subjStruct->list.add(subjStruct)
         );
-        return list;
+
+        return (List<SubjStruct>) TreeUtil.listToTree(list);
     }
     public SubjStruct findById(String id) {
         return subjStructRepository.findById(id).orElseThrow(()-> new DataNoFundException());

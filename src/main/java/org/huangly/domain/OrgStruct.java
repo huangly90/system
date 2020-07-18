@@ -1,15 +1,16 @@
 package org.huangly.domain;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
+import org.huangly.common.TreeData;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
+import java.util.List;
+
 @Document(value = "sys_org_struct")
 @Data
-public class OrgStruct {
+public class OrgStruct extends TreeData {
     @Id
     private String id;
     @Field("name")
@@ -20,8 +21,16 @@ public class OrgStruct {
     private String pid;
     @Field("relate_org_id")
     private String relateOrgId;
-    @Field("relate_org_code")
-    private String relateOrgCode;
-    @Field("relate_org_name")
-    private String relateOrgName;
+    @Field("child")
+    private List<OrgStruct> child;
+
+    @Override
+    public String getpk() {
+        return id;
+    }
+
+    @Override
+    public String getParentPk() {
+        return pid;
+    }
 }

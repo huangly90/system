@@ -1,5 +1,8 @@
 package org.huangly.common;
 
+import lombok.Data;
+
+@Data
 public class Result<T> {
 
     public static final int SUCCESS=200;
